@@ -1,6 +1,14 @@
 # Skin Analysis with Multi-Task Vision Transformer (ViT)
 
-Multi-task image classification pipeline that detects **skin type** AND **skin conditions** simultaneously using a shared ViT backbone.
+Image processing skin analysis project that detects **skin type** AND **skin conditions** simultaneously using a shared ViT backbone.
+
+## Features
+
+- **Multi-task Learning**: Single model predicts both skin type and multiple skin issues
+- **Real-time Analysis**: Live camera feed with instant classification
+- **Image Upload**: Analyze images from your device
+- **Visual Results**: Color-coded confidence bars and issue detection
+- **ONNX Export**: Optimized model for deployment
 
 ## Output Format
 
@@ -55,9 +63,8 @@ image detection/
     ├── model.py              # MultiTaskViT architecture
     ├── utils.py              # Dataset, annotations, evaluation
     ├── train.py              # Multi-task training pipeline
-    ├── inference.py           # CLI inference (image/camera/ONNX)
-    ├── gui.py                 # Camera GUI with live detection
-    └── embedded_inference.py  # Lightweight edge inference
+    ├── inference.py          # CLI inference (image/camera/ONNX)
+    └── gui.py                # Camera GUI with live detection
 ```
 
 ## Setup
@@ -95,11 +102,6 @@ python src/inference.py --use_camera
 ### GUI (camera + live detection)
 ```powershell
 python src/gui.py
-```
-
-### Edge / Raspberry Pi (ONNX)
-```powershell
-python src/embedded_inference.py --camera_id 0
 ```
 
 ## Extending with Real Annotations

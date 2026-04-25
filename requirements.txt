@@ -12,4 +12,3 @@ kaggle
 opendatasets
 onnx
 onnxruntime
-pyserial

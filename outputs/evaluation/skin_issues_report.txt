@@ -1,0 +1,12 @@
+              precision    recall  f1-score   support
+
+        acne     0.6190    0.6190    0.6190        21
+  dark_spots     0.0000    0.0000    0.0000        11
+    wrinkles     0.4000    0.2857    0.3333        21
+     redness     0.5833    0.2917    0.3889        24
+ large_pores     0.7500    0.4286    0.5455        21
+
+   micro avg     0.5645    0.3571    0.4375        98
+   macro avg     0.4705    0.3250    0.3773        98
+weighted avg     0.5219    0.3571    0.4162        98
+ samples avg     0.3527    0.2814    0.2870        98

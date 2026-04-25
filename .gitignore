@@ -1,28 +1,88 @@
 # Python
 __pycache__/
-*.pyc
-*.pyo
-.venv/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+*.log
+.env
+.venv
+env/
 venv/
+ENV/
+env.bak/
+venv.bak/
 
-# Model artifacts (too large for git)
-outputs/artifacts/*.pth
-outputs/artifacts/*.onnx
-outputs/artifacts/*.onnx.data
+# PyTorch
+*.pth
+*.pt
+*.onnx
+*.onnx.data
 
-# Dataset images
-outputs/raw_data/
-outputs/processed_data/
+# Jupyter Notebook
+.ipynb_checkpoints
 
-# Evaluation plots (regenerated on training)
-outputs/evaluation/
-
-# IDE
+# IDEs
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
 # OS
-Thumbs.db
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# Project specific
+outputs/raw_data/
+outputs/processed_data/
+outputs/artifacts/*.pth
+outputs/artifacts/*.onnx
+outputs/artifacts/*.onnx.data
+
+# Keep only essential model files
+!outputs/artifacts/label_map.json
+!outputs/artifacts/annotations.json
+
+# Node.js / Frontend
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+dist/
+dist-ssr/
+*.local
+
+# Frontend build
+Skin Analysis Platform front/node_modules/
+Skin Analysis Platform front/dist/
+Skin Analysis Platform front/.env.local
+Skin Analysis Platform front/.env.*.local
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
