@@ -28,8 +28,11 @@ export const VendingMachineSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-br from-secondary via-black-light to-secondary overflow-hidden relative">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,107,157,0.1),transparent_70%)]" />
+    <section className="py-20 px-6 bg-gradient-to-b from-black via-black-light to-black relative overflow-hidden">
+      {/* Enhanced Background Effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,27,141,0.15),transparent_70%)] gradient-shift" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -38,10 +41,18 @@ export const VendingMachineSection: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block px-5 py-2 glass-luxury rounded-full mb-6 neon-border"
+          >
+            <span className="text-primary font-medium tracking-wide">🚀 Innovation</span>
+          </motion.div>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
             Smart Vending, Smarter Skincare
           </h2>
-          <p className="text-xl text-pink-light max-w-2xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Experience the future of skincare with our AI-powered vending stations
           </p>
         </motion.div>
@@ -64,27 +75,27 @@ export const VendingMachineSection: React.FC = () => {
                 }}
                 className="relative"
               >
-                <Card className="p-12 bg-gradient-to-br from-primary/20 to-pink-dark/10 border-primary/30 backdrop-blur-xl">
+                <Card className="p-12 glass-luxury border-primary/30 backdrop-blur-xl luxury-card neon-border">
                   <div className="flex flex-col items-center text-center">
                     <div className="relative mb-8">
-                      <Package className="w-32 h-32 text-primary" strokeWidth={1.5} />
+                      <Package className="w-32 h-32 text-primary neon-glow" strokeWidth={1.5} />
                       <motion.div
                         animate={{
-                          scale: [1, 1.2, 1],
-                          opacity: [0.3, 0.6, 0.3]
+                          scale: [1, 1.3, 1],
+                          opacity: [0.4, 0.8, 0.4]
                         }}
                         transition={{
-                          duration: 2,
+                          duration: 3,
                           repeat: Infinity
                         }}
                         className="absolute inset-0 bg-pink-glow rounded-full blur-3xl"
                       />
                     </div>
 
-                    <h3 className="text-2xl font-bold text-white mb-4">
+                    <h3 className="text-3xl font-bold text-white mb-4">
                       DermaStation Kiosk
                     </h3>
-                    <p className="text-pink-light mb-6">
+                    <p className="text-gray-300 mb-8 text-lg">
                       Next-generation skincare vending with built-in AI analysis
                     </p>
 
@@ -96,11 +107,11 @@ export const VendingMachineSection: React.FC = () => {
                       ].map((item, index) => (
                         <motion.div
                           key={index}
-                          whileHover={{ scale: 1.05 }}
-                          className="bg-glass-bg backdrop-blur-sm rounded-xl p-3 border border-primary/20"
+                          whileHover={{ scale: 1.1, y: -5 }}
+                          className="glass-luxury backdrop-blur-sm rounded-xl p-4 border border-primary/30 hover:border-primary/60 transition-all neon-border"
                         >
-                          <item.icon className="w-6 h-6 text-primary mx-auto mb-2" />
-                          <div className="text-xs text-white">{item.label}</div>
+                          <item.icon className="w-7 h-7 text-primary mx-auto mb-2 drop-shadow-[0_0_10px_rgba(255,27,141,0.6)]" />
+                          <div className="text-xs text-white font-medium">{item.label}</div>
                         </motion.div>
                       ))}
                     </div>
@@ -137,14 +148,14 @@ export const VendingMachineSection: React.FC = () => {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ x: 10 }}
               >
-                <Card className="p-6 bg-glass-bg backdrop-blur-xl border-primary/20 hover:border-primary/40 transition-all">
+                <Card className="p-6 glass-luxury backdrop-blur-xl border-primary/30 hover:border-primary/60 transition-all luxury-card">
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-gradient-to-br from-primary to-pink-dark rounded-xl">
+                    <div className="p-3 bg-gradient-to-br from-primary to-pink-dark rounded-xl pulse-glow">
                       <feature.icon className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-bold mb-2 text-white">{feature.title}</h4>
-                      <p className="text-sm text-pink-light">{feature.description}</p>
+                      <h4 className="font-bold mb-2 text-white text-lg">{feature.title}</h4>
+                      <p className="text-sm text-gray-300 leading-relaxed">{feature.description}</p>
                     </div>
                   </div>
                 </Card>
@@ -157,41 +168,49 @@ export const VendingMachineSection: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-primary to-pink-dark rounded-3xl p-12 text-center text-white"
+          className="bg-gradient-to-r from-primary via-pink-medium to-pink-dark rounded-3xl p-12 text-center text-white relative overflow-hidden pulse-glow"
         >
-          <h3 className="text-3xl font-bold mb-4">Find a DermaStation Near You</h3>
-          <p className="text-lg mb-8 text-pink-light max-w-2xl mx-auto">
-            Visit one of our locations to experience AI-powered skincare vending
-          </p>
+          {/* Animated Background Pattern */}
+          <div className="absolute inset-0 opacity-10" style={{
+            backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+            backgroundSize: '30px 30px'
+          }} />
+          
+          <div className="relative z-10">
+            <h3 className="text-4xl font-bold mb-4 drop-shadow-lg">Find a DermaStation Near You</h3>
+            <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto">
+              Visit one of our locations to experience AI-powered skincare vending
+            </p>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button variant="secondary" size="lg" className="gap-2">
-              <MapPin className="w-5 h-5" />
-              View Locations
-            </Button>
-            <Button
-              variant="ghost"
-              size="lg"
-              className="bg-white/10 hover:bg-white/20 text-white border-white/30"
-            >
-              Learn More
-            </Button>
-          </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button variant="secondary" size="lg" className="gap-2 btn-luxury-glow bg-white text-primary hover:bg-gray-100">
+                <MapPin className="w-5 h-5" />
+                View Locations
+              </Button>
+              <Button
+                variant="ghost"
+                size="lg"
+                className="glass-luxury hover:bg-white/20 text-white border-white/40 hover:border-white/80"
+              >
+                Learn More
+              </Button>
+            </div>
 
-          <div className="flex justify-center gap-12 mt-12">
-            <div>
-              <div className="text-4xl font-bold">50+</div>
-              <div className="text-pink-light">Locations</div>
-            </div>
-            <div className="w-px bg-white/30" />
-            <div>
-              <div className="text-4xl font-bold">24/7</div>
-              <div className="text-pink-light">Available</div>
-            </div>
-            <div className="w-px bg-white/30" />
-            <div>
-              <div className="text-4xl font-bold">100+</div>
-              <div className="text-pink-light">Products</div>
+            <div className="flex justify-center gap-12 mt-12">
+              <div>
+                <div className="text-5xl font-bold drop-shadow-lg">50+</div>
+                <div className="text-white/80 mt-1">Locations</div>
+              </div>
+              <div className="w-px bg-white/40" />
+              <div>
+                <div className="text-5xl font-bold drop-shadow-lg">24/7</div>
+                <div className="text-white/80 mt-1">Available</div>
+              </div>
+              <div className="w-px bg-white/40" />
+              <div>
+                <div className="text-5xl font-bold drop-shadow-lg">100+</div>
+                <div className="text-white/80 mt-1">Products</div>
+              </div>
             </div>
           </div>
         </motion.div>

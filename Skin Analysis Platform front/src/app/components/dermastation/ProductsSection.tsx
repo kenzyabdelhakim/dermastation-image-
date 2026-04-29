@@ -80,91 +80,100 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ skinType }) =>
   ];
 
   return (
-    <section id="services" className="py-20 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section id="services" className="section-spacer section-dark-gray relative overflow-hidden">
+      {/* Minimal Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,179,217,0.04),transparent_70%)]" />
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-2 glass-editorial rounded-full mb-8 border-baby-pink"
+          >
+            <span className="text-primary text-sm tracking-luxury-wide uppercase">Premium Collection</span>
+          </motion.div>
+          <h2 className="editorial-heading mb-6">
             Premium Skincare Products
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="editorial-body max-w-2xl mx-auto">
             {skinType
               ? `Curated recommendations for ${skinType} skin`
               : 'Professional-grade products for every skin type'}
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {products.map((product, index) => (
             <motion.div
               key={product.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
+              transition={{ delay: index * 0.15, duration: 0.8 }}
+              className="fade-in-editorial"
+              style={{ animationDelay: `${index * 0.15}s` }}
             >
-              <Card className="overflow-hidden h-full flex flex-col group">
-                <div className="relative overflow-hidden">
-                  <motion.img
+              <Card className="overflow-hidden h-full flex flex-col editorial-card hover-scale-editorial">
+                <div className="relative overflow-hidden image-zoom-scroll">
+                  <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-64 object-cover"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
+                    className="w-full h-72 object-cover"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
                   {product.badge && (
-                    <div className="absolute top-4 left-4 px-3 py-1 bg-primary text-white rounded-full text-sm font-medium shadow-lg">
+                    <div className="absolute top-6 left-6 px-4 py-2 glass-editorial text-primary rounded-full text-xs tracking-luxury-wide uppercase border-baby-pink">
                       {product.badge}
                     </div>
                   )}
 
                   <motion.button
-                    initial={{ opacity: 0, scale: 0.8 }}
                     whileHover={{ scale: 1.1 }}
-                    className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all"
+                    className="absolute top-6 right-6 w-12 h-12 glass-editorial rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all border-baby-pink"
                   >
                     <Heart className="w-5 h-5 text-primary" />
                   </motion.button>
 
-                  <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Button variant="primary" size="sm" className="w-full gap-2">
+                  <div className="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-all">
+                    <button className="editorial-button w-full text-xs flex items-center justify-center gap-2">
                       <ShoppingBag className="w-4 h-4" />
                       Quick Add
-                    </Button>
+                    </button>
                   </div>
                 </div>
 
-                <div className="p-6 flex-1 flex flex-col">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-primary bg-pink-light px-3 py-1 rounded-full">
+                <div className="p-8 flex-1 flex flex-col">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs text-primary tracking-luxury-wide uppercase border-baby-pink px-3 py-1.5 rounded-full glass-editorial">
                       {product.category}
                     </span>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1.5">
                       <Star className="w-4 h-4 fill-primary text-primary" />
-                      <span className="font-medium">{product.rating}</span>
+                      <span className="text-sm font-light text-soft-white">{product.rating}</span>
                     </div>
                   </div>
 
-                  <h3 className="text-xl mb-2">{product.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4 flex-1">
+                  <h3 className="text-xl font-light text-soft-white mb-3 tracking-luxury">{product.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-6 flex-1 leading-relaxed font-light">
                     {product.description}
                   </p>
 
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-primary">
+                  <div className="flex items-center justify-between pt-6 border-t border-primary/10">
+                    <span className="text-3xl font-light gradient-baby-pink">
                       ${product.price}
                     </span>
-                    <Button variant="ghost" size="sm">
-                      Details
-                    </Button>
+                    <button className="text-primary hover:text-pink-medium text-sm tracking-luxury uppercase transition-colors">
+                      Details →
+                    </button>
                   </div>
                 </div>
               </Card>
@@ -176,11 +185,11 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ skinType }) =>
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="text-center mt-20"
         >
-          <Button variant="primary" size="lg">
+          <button className="editorial-button baby-pink-glow">
             View All Products
-          </Button>
+          </button>
         </motion.div>
       </div>
     </section>

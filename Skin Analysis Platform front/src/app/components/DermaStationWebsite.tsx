@@ -3,9 +3,11 @@ import { Navbar } from './dermastation/Navbar';
 import { HeroSection } from './dermastation/HeroSection';
 import { SkinAnalysisSection } from './dermastation/SkinAnalysisSection';
 import { ResultsSection } from './dermastation/ResultsSection';
-import { ProductsSection } from './dermastation/ProductsSection';
+import { PersonalizedRoutineSection } from './dermastation/PersonalizedRoutineSection';
+import { FeaturedProductsSection } from './dermastation/FeaturedProductsSection';
 import { VendingMachineSection } from './dermastation/VendingMachineSection';
 import { Footer } from './dermastation/Footer';
+import { CursorGlow } from './CursorGlow';
 import { analyzeSkin, checkBackendHealth, generateMockAnalysis } from '../services/api';
 
 export interface AnalysisData {
@@ -90,6 +92,7 @@ export const DermaStationWebsite: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <CursorGlow />
       <Navbar />
       <HeroSection onStartAnalysis={handleStartAnalysis} />
 
@@ -104,12 +107,23 @@ export const DermaStationWebsite: React.FC = () => {
       )}
 
       {showResults && analysisData && (
-        <div id="results-section">
-          <ResultsSection data={analysisData} />
-        </div>
+        <>
+          <div id="results-section">
+            <ResultsSection data={analysisData} />
+          </div>
+          
+          {/* Personalized Routine Section - Shows after analysis */}
+          <PersonalizedRoutineSection 
+            skinType={analysisData.skinType.type}
+            concerns={analysisData.issues
+              .filter(issue => issue.detected)
+              .map(issue => issue.name)
+            }
+          />
+        </>
       )}
 
-      <ProductsSection skinType={analysisData?.skinType.type} />
+      <FeaturedProductsSection />
       <VendingMachineSection />
       <Footer />
     </div>

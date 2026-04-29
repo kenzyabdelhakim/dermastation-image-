@@ -64,18 +64,30 @@ export const SkinAnalysisSection: React.FC<SkinAnalysisSectionProps> = ({
   };
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-white to-pink-light/30">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-20 px-6 bg-gradient-to-b from-black via-black-light to-black relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,27,141,0.1),transparent_70%)]" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+      
+      <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block px-5 py-2 glass-luxury rounded-full mb-6 neon-border"
+          >
+            <span className="text-primary font-medium tracking-wide">🔬 AI Analysis</span>
+          </motion.div>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
             AI Skin Analysis
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-xl text-gray-300">
             Upload a clear photo of your face for instant analysis
           </p>
         </motion.div>
@@ -85,37 +97,37 @@ export const SkinAnalysisSection: React.FC<SkinAnalysisSectionProps> = ({
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
         >
-          <Card className="p-8 md:p-12 bg-glass-bg backdrop-blur-xl border-glass-border">
+          <Card className="p-8 md:p-12 glass-luxury backdrop-blur-xl border-primary/30 neon-border">
             {!preview ? (
               <div>
-                <div className="border-2 border-dashed border-primary/30 rounded-3xl p-12 text-center bg-pink-light/20 hover:border-primary transition-all duration-300 hover:bg-pink-light/40">
+                <div className="border-2 border-dashed border-primary/40 rounded-3xl p-12 text-center glass-luxury hover:border-primary transition-all duration-300 hover:bg-primary/5 luxury-card">
                   <motion.div
                     animate={{
-                      y: [0, -10, 0]
+                      y: [0, -15, 0]
                     }}
                     transition={{
-                      duration: 2,
+                      duration: 3,
                       repeat: Infinity
                     }}
                   >
                     <div className="relative inline-block mb-6">
-                      <Upload className="w-20 h-20 text-primary" />
+                      <Upload className="w-24 h-24 text-primary neon-glow" />
                       <motion.div
                         animate={{
-                          scale: [1, 1.3, 1],
-                          opacity: [0.5, 0.8, 0.5]
+                          scale: [1, 1.4, 1],
+                          opacity: [0.6, 1, 0.6]
                         }}
                         transition={{
-                          duration: 2,
+                          duration: 3,
                           repeat: Infinity
                         }}
-                        className="absolute inset-0 bg-pink-glow rounded-full blur-xl"
+                        className="absolute inset-0 bg-pink-glow rounded-full blur-2xl"
                       />
                     </div>
                   </motion.div>
 
-                  <h3 className="text-2xl mb-4">Upload Your Photo</h3>
-                  <p className="text-muted-foreground mb-8">
+                  <h3 className="text-3xl font-bold text-white mb-4">Upload Your Photo</h3>
+                  <p className="text-gray-300 mb-8 text-lg">
                     Drag & drop or choose from your device
                   </p>
 
@@ -123,7 +135,7 @@ export const SkinAnalysisSection: React.FC<SkinAnalysisSectionProps> = ({
                     <Button
                       variant="primary"
                       onClick={() => fileInputRef.current?.click()}
-                      className="gap-2"
+                      className="gap-2 btn-luxury-glow pulse-glow"
                     >
                       <Upload className="w-5 h-5" />
                       Choose File
@@ -131,7 +143,7 @@ export const SkinAnalysisSection: React.FC<SkinAnalysisSectionProps> = ({
                     <Button
                       variant="secondary"
                       onClick={() => cameraInputRef.current?.click()}
-                      className="gap-2"
+                      className="gap-2 glass-luxury border-primary/40 hover:border-primary/80 text-white"
                     >
                       <Camera className="w-5 h-5" />
                       Take Photo
@@ -155,13 +167,21 @@ export const SkinAnalysisSection: React.FC<SkinAnalysisSectionProps> = ({
                   />
                 </div>
 
-                <div className="mt-8 bg-nude/30 rounded-2xl p-6">
-                  <h4 className="font-medium mb-3">Tips for Best Results:</h4>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>✓ Use natural or bright lighting</li>
-                    <li>✓ Face the camera directly</li>
-                    <li>✓ Remove makeup if possible</li>
-                    <li>✓ Ensure your face is clearly visible</li>
+                <div className="mt-8 glass-luxury rounded-2xl p-6 border border-primary/20">
+                  <h4 className="font-semibold mb-4 text-white text-lg">💡 Tips for Best Results:</h4>
+                  <ul className="space-y-3 text-sm text-gray-300">
+                    <li className="flex items-center gap-2">
+                      <span className="text-primary">✓</span> Use natural or bright lighting
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-primary">✓</span> Face the camera directly
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-primary">✓</span> Remove makeup if possible
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-primary">✓</span> Ensure your face is clearly visible
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -263,6 +283,7 @@ export const SkinAnalysisSection: React.FC<SkinAnalysisSectionProps> = ({
                         if (fileInputRef.current) fileInputRef.current.value = '';
                         if (cameraInputRef.current) cameraInputRef.current.value = '';
                       }}
+                      className="glass-luxury border-primary/30 hover:border-primary/60 text-white"
                     >
                       Change Photo
                     </Button>
@@ -270,7 +291,7 @@ export const SkinAnalysisSection: React.FC<SkinAnalysisSectionProps> = ({
                       variant="primary"
                       size="lg"
                       onClick={handleAnalyze}
-                      className="gap-2"
+                      className="gap-2 btn-luxury-glow pulse-glow"
                     >
                       <Scan className="w-5 h-5" />
                       Start Analysis
@@ -282,17 +303,17 @@ export const SkinAnalysisSection: React.FC<SkinAnalysisSectionProps> = ({
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3"
+                    className="mt-4 p-5 glass-luxury border border-red-500/50 rounded-xl flex items-start gap-3"
                   >
-                    <AlertCircle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
+                    <AlertCircle className="w-6 h-6 text-red-400 mt-0.5 flex-shrink-0 drop-shadow-[0_0_10px_rgba(239,68,68,0.6)]" />
                     <div>
-                      <h4 className="font-medium text-red-900 mb-1">Analysis Failed</h4>
-                      <p className="text-sm text-red-700">{error}</p>
+                      <h4 className="font-semibold text-red-300 mb-1 text-lg">Analysis Failed</h4>
+                      <p className="text-sm text-gray-300">{error}</p>
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={handleAnalyze}
-                        className="mt-2 text-red-600 hover:text-red-700"
+                        className="mt-3 text-red-400 hover:text-red-300 hover:bg-red-500/10"
                       >
                         Try Again
                       </Button>
